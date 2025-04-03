@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: result
+  name: result
+spec:
+  type: LoadBalancer
+  ports:
+  - name: "result-service"
+    port: 8081        # Port exposed by the service
+    targetPort: 80    # Port on the pod where traffic is sent
+    nodePort: 31001   # Optional: NodePort is still valid but not required for LoadBalancer
+  selector:
+    app: result
